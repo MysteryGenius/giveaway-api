@@ -10,6 +10,12 @@ Install all Laravel dependencies
 composer install
 ```
 
+Install all Node dependencies
+
+```bash
+yarn
+```
+
 Create a copy of your .env file
 
 ```bash
