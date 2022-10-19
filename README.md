@@ -2,6 +2,14 @@
 
 ## GiveawayAPI
 
+### Considerations
+
+The technical challenge states that we should anticipate high visitor volumes. Since each validation will take 10 minutes to complete, we will need to handle it as a background job. This might cause a race condition if we do not implement a locking mechanism. We will need to ensure that the same voucher code is not used twice.
+
+### Dependencies
+
+- [Commitlint](https://commitlint.js.org) - Lint commit messages
+
 ---
 
 Install all Laravel dependencies
