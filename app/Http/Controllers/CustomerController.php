@@ -26,7 +26,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        //
+        // TODO
     }
 
     /**
@@ -37,7 +37,7 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // TODO
     }
 
     /**
@@ -48,7 +48,9 @@ class CustomerController extends Controller
      */
     public function show(Customer $customer)
     {
-        //
+        // return customer as json with Purchases
+
+        return $customer->load('PurchaseTransactions');
     }
 
     /**
@@ -59,7 +61,7 @@ class CustomerController extends Controller
      */
     public function edit(Customer $customer)
     {
-        //
+        // TODO
     }
 
     /**
@@ -71,7 +73,7 @@ class CustomerController extends Controller
      */
     public function update(Request $request, Customer $customer)
     {
-        //
+        // TODO
     }
 
     /**
@@ -82,6 +84,6 @@ class CustomerController extends Controller
      */
     public function destroy(Customer $customer)
     {
-        //
+        // TODO
     }
 }

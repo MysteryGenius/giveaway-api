@@ -24,4 +24,18 @@ class PurchaseTransactionFactory extends Factory
             'transaction_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
         ];
     }
+
+    /**
+     * Indicate that the model's transaction_at is within 30 days from now.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\PurchaseTransaction>
+     */
+    public function within30Days()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'transaction_at' => $this->faker->dateTimeBetween('-30 days', 'now'),
+            ];
+        });
+    }
 }

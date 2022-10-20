@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CampaignController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\VoucherController;
 use Illuminate\Support\Facades\Route;
@@ -21,9 +22,15 @@ Route::post('/auth/login', [AuthController::class, 'login']);
 
 Route::middleware(['auth:sanctum'])->group(function () {
 
+    Route::prefix('campaign')->group(function () {
+        Route::get('/availability', [CampaignController::class, 'availability'])->name('campaign.availability');
+        Route::post('/eligibility', [CampaignController::class, 'eligibility'])->name('campaign.eligibility');
+    });
+
     // Customers
     Route::prefix('/customers')->group(function () {
         Route::get('/', [CustomerController::class, 'index'])->name('customer.index');
+        Route::get('/{customer}', [CustomerController::class, 'show'])->name('customer.show');
     });
 
     // Vouchers
