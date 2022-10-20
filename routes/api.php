@@ -1,6 +1,8 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\VoucherController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +16,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('/auth/register', [AuthController::class, 'register']);
+Route::post('/auth/login', [AuthController::class, 'login']);
+
+Route::middleware(['auth:sanctum'])->group(function () {
+
+    // Customers
+    Route::prefix('/customers')->group(function () {
+        Route::get('/', [CustomerController::class, 'index'])->name('customer.index');
+    });
+
+    // Vouchers
+    Route::prefix('/vouchers')->group(function () {
+        Route::get('/', [VoucherController::class, 'index'])->name('voucher.index');
+    });
 });
