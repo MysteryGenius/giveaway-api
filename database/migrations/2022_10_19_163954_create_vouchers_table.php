@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('code', 10)->unique();
 
-            $table->string('status')->default('pending'); // pending, locked, redeemed
+            $table->string('status')->default('pending'); // pending, locked, active, redeemed
 
             $table->foreignId('customer_id')
                 ->nullable()

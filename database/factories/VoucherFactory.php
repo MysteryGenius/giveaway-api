@@ -18,7 +18,7 @@ class VoucherFactory extends Factory
     {
         return [
             'code' => $this->faker->unique()->regexify('[A-Z0-9]{10}'),
-            'status' => $this->faker->randomElement(['pending', 'locked', 'redeemed']),
+            'status' => $this->faker->randomElement(['pending', 'active', 'redeemed']),
         ];
     }
 }

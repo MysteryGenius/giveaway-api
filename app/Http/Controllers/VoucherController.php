@@ -34,7 +34,7 @@ class VoucherController extends Controller
      */
     public function create()
     {
-        //
+        // TODO
     }
 
     /**
@@ -45,18 +45,25 @@ class VoucherController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // TODO
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Voucher  $voucher
+     * @param Str $voucher_code
      * @return \Illuminate\Http\Response
      */
-    public function show(Voucher $voucher)
+    public function show($voucher_code)
     {
-        //
+        // return voucher as json with Customer
+        $voucher = Voucher::where('code', $voucher_code)->first();
+        if ($voucher) {
+            return $voucher;
+        }
+        return response()->json([
+            'message' => 'Voucher not found',
+        ], 404);
     }
 
     /**
@@ -67,7 +74,7 @@ class VoucherController extends Controller
      */
     public function edit(Voucher $voucher)
     {
-        //
+        // TODO
     }
 
     /**
@@ -79,7 +86,7 @@ class VoucherController extends Controller
      */
     public function update(Request $request, Voucher $voucher)
     {
-        //
+        // TODO
     }
 
     /**
@@ -90,6 +97,6 @@ class VoucherController extends Controller
      */
     public function destroy(Voucher $voucher)
     {
-        //
+        // TODO
     }
 }
