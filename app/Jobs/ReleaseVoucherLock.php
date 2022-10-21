@@ -40,7 +40,7 @@ class ReleaseVoucherLock implements ShouldQueue
     public function handle()
     {
         // release voucher lock to pending if voucher is not active
-        if ($this->customer->Voucher->status !== 'active' || $this->customer->Voucher->status !== 'redeemed') {
+        if ($this->customer->Voucher->status === 'locked') {
             $this->customer->Voucher->status = 'pending';
             $this->customer->Voucher->customer_id = null;
             $this->customer->Voucher->save();

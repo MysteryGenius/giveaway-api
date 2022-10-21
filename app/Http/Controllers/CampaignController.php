@@ -33,7 +33,7 @@ class CampaignController extends Controller
 
         // check if customer already has a voucher
         $found = Voucher::where('customer_id', $customer->id)->first();
-        if ($found) {
+        if ($found !== null) {
             return response()->json([
                 'eligible' => false,
                 'message' => 'Customer already has a voucher',
@@ -61,6 +61,7 @@ class CampaignController extends Controller
 
         return response()->json([
             'eligible' => $eligible,
+            'voucher' => $voucher,
             'message' => $eligible ? 'Customer is eligible for a voucher' : 'Customer is not eligible for a voucher',
             'lock_expiry' => $lock_expiry,
         ]);
@@ -76,9 +77,9 @@ class CampaignController extends Controller
 
 
         $customer = Customer::findOrFail(request()->customer_id);
-        $voucher = Voucher::where('customer_id', $customer->id)->where('status', 'locked')->first();
+        $voucher = Voucher::where('customer_id', $customer->id)->first();
 
-        if ($voucher) {
+        if ($voucher !== null) {
             // handle image upload to image recognition API
             // $client = new \GuzzleHttp\Client();
             // $res = $client->request('POST', 'http://example.com');

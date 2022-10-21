@@ -32,6 +32,12 @@ class CustomerSeeder extends Seeder
                 'total_spent' => 40.0,
             ]);
 
+            Customer::factory()->create([
+                'id' => 2,
+                'first_name' => 'Jane',
+                'last_name' => 'Doe',
+            ]);
+
             Customer::factory()
                 ->count(100)
                 ->create()
