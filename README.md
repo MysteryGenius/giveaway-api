@@ -98,6 +98,8 @@ The technical challenge states that we should anticipate high visitor volumes. S
 
 - [Postman](https://www.postman.com) - API testing
 
+## Installation
+
 ---
 
 Install all Laravel dependencies
@@ -173,3 +175,7 @@ Share the development server on a public URL.
 ```bash
 sail share
 ```
+
+## Deployment
+
+The application would be best deployed on Digital Ocean using Laravel Forge to provision the services. Since likely this is a one time service. We can use a single droplet to host the application. The droplet would need to have the following installed. However if we are going to scale this application we can use vapor to host the application on AWS.
