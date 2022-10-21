@@ -1,12 +1,40 @@
-# Getting Setup
+# GiveawayAPI
 
-## GiveawayAPI
+## Endpoints
 
-### Considerations
+#### Login
+
+```
+POST /api/auth/login
+```
+
+This endpoint allows you to login to an authorized account to access resicted content. You will need to set the `X-XSRF-TOKEN` to prevent a CSRF issue. After POSTing to the endpoint you will have a bearer token to be used as the auth key in the end points below
+
+#### Availability
+
+```
+GET /api/campaign/availability
+```
+
+This endpoint returns the number of availabile unclaimed vouchers
+
+#### Eligibility
+
+```
+POST /api/campaign/eligibility
+
+body 
+{
+    "customer_id"
+}
+```
+
+
+## Considerations
 
 The technical challenge states that we should anticipate high visitor volumes. Since each validation will take 10 minutes to complete, we will need to handle it as a background job. This might cause a race condition if we do not implement a locking mechanism. We will need to ensure that the same voucher code is not used twice.
 
-### Dependencies
+## Dependencies
 
 - [Commitlint](https://commitlint.js.org) - Lint commit messages
 
