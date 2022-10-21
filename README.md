@@ -1,5 +1,11 @@
 # GiveawayAPI
 
+Simple API for giveaways. The API available allows you to create the giveaway page. The authentication is done via a bearer token. The Availability API allows the user to check if there are any vouchers available. Other endpoints available are the Index and Show for Vouchers and Customer.
+
+The two core API endpoints are the Eligibility and Submission endpoints. The Eligibility endpoint allows the user to check if they are eligible for the giveaway. The Submission endpoint allows the user to submit their details and receive a voucher.
+
+The Eligibility endpoint locks down a voucher if the user is eligible. There will only be 10 minutes to submit the details before the voucher is unlocked and available for another user. This is achieved by using a DB Query. Ideally this would be done using a Redis cache.
+
 ## Endpoints
 
 #### Login
@@ -27,7 +33,7 @@ This endpoint returns the number of availabile unclaimed vouchers
 ```
 POST /api/campaign/eligibility
 
-body 
+body
 {
     "customer_id": "1"
 }
@@ -59,6 +65,18 @@ This is to submit the validation photo within ten minutes.
 POST /api/upload-photo-submission
 ```
 
+#### Others
+
+```
+
+GET /api/vouchers
+GET /api/vouchers/:voucher_code
+
+GET /api/customers
+GET /api/customers/:id
+
+```
+
 
 ## Considerations
 
@@ -71,6 +89,14 @@ The technical challenge states that we should anticipate high visitor volumes. S
 - [Commitlint](https://commitlint.js.org) - Lint commit messages
 
 ### PHP
+
+- [Pest](https://pestphp.com) - Testing framework
+- [Laravel](https://laravel.com) - PHP framework
+- [Laravel Sanctum](https://laravel.com/docs/8.x/sanctum) - Authentication
+
+### Testing
+
+- [Postman](https://www.postman.com) - API testing
 
 ---
 
