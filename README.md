@@ -8,6 +8,8 @@
 POST /api/auth/login
 ```
 
+<img src="https://user-images.githubusercontent.com/38975808/197118860-1a4b2c81-34ba-47fa-99eb-5b3cab904d07.png" width="500" />
+
 This endpoint allows you to login to an authorized account to access resicted content. You will need to set the `X-XSRF-TOKEN` to prevent a CSRF issue. After POSTing to the endpoint you will have a bearer token to be used as the auth key in the end points below
 
 #### Availability
@@ -15,6 +17,8 @@ This endpoint allows you to login to an authorized account to access resicted co
 ```
 GET /api/campaign/availability
 ```
+
+<img src="https://user-images.githubusercontent.com/38975808/197118982-0afa53ed-2b29-4d17-91ce-f946b030ec0f.png" width="500" />
 
 This endpoint returns the number of availabile unclaimed vouchers
 
@@ -25,8 +29,34 @@ POST /api/campaign/eligibility
 
 body 
 {
-    "customer_id"
+    "customer_id": "1"
 }
+```
+
+<img src="https://user-images.githubusercontent.com/38975808/197119042-c0314425-2dea-4aa1-a07c-1efcc717a16b.png" width="500" />
+
+This endpoint checks if the customer qualifies for the event
+
+#### Submission
+
+```
+POST /api/campaign/submission
+
+body
+{
+    "customer_id: "1",
+    "submission_image_path": "example.com"
+}
+```
+
+<img src="https://user-images.githubusercontent.com/38975808/197119292-aca5b6c9-3c3d-41d0-9d29-1ba79295122d.png" width="500" />
+
+This is to submit the validation photo within ten minutes.
+
+#### Upload Image
+
+```
+POST /api/upload-photo-submission
 ```
 
 
@@ -36,7 +66,11 @@ The technical challenge states that we should anticipate high visitor volumes. S
 
 ## Dependencies
 
+### Javascript
+
 - [Commitlint](https://commitlint.js.org) - Lint commit messages
+
+### PHP
 
 ---
 
