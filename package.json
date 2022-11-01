@@ -13,6 +13,6 @@
         "vite": "^3.0.0"
     },
     "dependencies": {
-        "@commitlint/cli": "^17.1.2"
+        "@commitlint/cli": "^17.2.0"
     }
 }
